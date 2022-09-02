@@ -1,0 +1,235 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>One two three - Cryptographer&#x27;s Codex</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../intro.html">Introduction</a></li><li class="chapter-item expanded "><a href="../beginner/intro.html"><strong aria-hidden="true">1.</strong> Beginner series</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../beginner/copilot.html"><strong aria-hidden="true">1.1.</strong> Copilot my savior</a></li><li class="chapter-item expanded "><a href="../beginner/cut_and_paste.html"><strong aria-hidden="true">1.2.</strong> Cut and paste</a></li><li class="chapter-item expanded "><a href="../beginner/one_two_three.html" class="active"><strong aria-hidden="true">1.3.</strong> One two three</a></li><li class="chapter-item expanded "><a href="../beginner/propagation.html"><strong aria-hidden="true">1.4.</strong> Propagation</a></li></ol></li><li class="chapter-item expanded "><a href="../cryptopals/intro.html"><strong aria-hidden="true">2.</strong> Cryptopals</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cryptopals/set_1.html"><strong aria-hidden="true">2.1.</strong> Set 1</a></li><li class="chapter-item expanded "><a href="../cryptopals/set_2.html"><strong aria-hidden="true">2.2.</strong> Set 2</a></li><li class="chapter-item expanded "><a href="../cryptopals/set_3.html"><strong aria-hidden="true">2.3.</strong> Set 3</a></li></ol></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">3.</strong> Resources</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../resources/python_tricks.html"><strong aria-hidden="true">3.1.</strong> Python tips and tricks</a></li><li class="chapter-item expanded "><a href="../resources/env_setup.html"><strong aria-hidden="true">3.2.</strong> Setting up a Linux environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../resources/env/windows.html"><strong aria-hidden="true">3.2.1.</strong> Windows</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Cryptographer&#x27;s Codex</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="one-two-three"><a class="header" href="#one-two-three">One two three</a></h1>
+<h2 id="challenge"><a class="header" href="#challenge">Challenge</a></h2>
+<p>Ok so ECB mode was a bust, what else can we try? What if don't use blocks at all?</p>
+<ul>
+<li><a href="/challenge-sources/one_two_three/encryptor.py">encryptor.py</a></li>
+<li><a href="/challenge-sources/one_two_three/secret.enc">secret.enc</a></li>
+</ul>
+<h2 id="guide"><a class="header" href="#guide">Guide</a></h2>
+<p>Good job figuring out the last challenge!</p>
+<p>You saw that ECB mode has one crucial weakness, each block gets encrypted and decrypted exactly the same way, no matter where it's located in the ciphertext. This led you to be able to move blocks around to wherever you wanted and have the plaintext change in the same way.</p>
+<p>So now that we know ECB is bad, how can we circumvent this problem? How can we make our cipher mode not have this problem?</p>
+<h2 id="primer-the-one-time-pad"><a class="header" href="#primer-the-one-time-pad">Primer: The one time pad</a></h2>
+<p>Let's say I want to encrypt a one byte message, and I decide to do so by XORing it with a random byte. I then happily send this off and you happen to be able to intercept it.</p>
+<p>So you have this one byte encrypted message, which you know is something that I encrypted via XOR. Is it possible for you to figure out what the original message was?</p>
+<p>It turns out that the answer is no! If the byte I used for the XOR was random, then the resulting encrypted byte is also completely random and unrelated in any way to my original message.</p>
+<p>This is what is called &quot;information theoretically secure&quot;. Even if you had infinite time, you could never figure out which message my original byte was. This encryption scheme is called the <a href="https://en.wikipedia.org/wiki/One-time_pad">One-time pad</a></p>
+<p>Now back to AES</p>
+<h2 id="counter-mode"><a class="header" href="#counter-mode">Counter mode</a></h2>
+<p>Let's say we want to bring that idea to reality, how can we generate a bunch of random bytes to xor our message against? </p>
+<p>This stream of random bytes needs to be</p>
+<ul>
+<li>Able to be generated from the key, so we can regenerate it when we want to decrypt the message</li>
+<li>But still random enough that it's secure</li>
+</ul>
+<p>Here's how Counter (CTR) mode achieves this</p>
+<ol>
+<li>Start a counter at c = 1</li>
+<li>Pad c out to 16 bytes and encrypt it with your AES key</li>
+<li>Then you have 16 random bytes, use that to XOR with your message</li>
+<li>Then increment the counter and continue until you have enough random bytes to encrypt your entire message</li>
+</ol>
+<p>So the resulting ciphertext is like</p>
+<ul>
+<li>The first 16 bytes are the first 16 bytes of the plaintext XORd with the aes encryption E of the byte 1, E(pad(1))</li>
+<li>The next 16 bytes are plaintext_2 XOR E(pad(2))</li>
+<li>then plaintext_3 XOR E(pad(3)) and so on</li>
+</ul>
+<p>The stream of random bytes, ie E(pad(1)) | E(pad(2)) | E(pad(3)) ... is called the keystream</p>
+<p>This evidently solves the issue with ECB we saw earlier, because if you move a block around then it'll be something completely different when you decrypt it, since it was encrypted with a different part of the keystream.</p>
+<h2 id="the-twist"><a class="header" href="#the-twist">The twist</a></h2>
+<p>Actually I lied, the description I gave is not the real CTR mode, because it has a crucial weakness!</p>
+<p>Your job is to find this weakness and decrypt the messages found in <code>secret.enc</code></p>
+<p>To solve this you'll need to figure out what this weakness is, use some googling to figure out why this weakness is so critical, and learn how you can exploit it.</p>
+<p>Some tips:</p>
+<ul>
+<li><code>secret.txt</code> contains many lines of english text and, of course, the flag</li>
+<li>You may find that your code from the first challenge, &quot;Copilot my savior&quot;, will come in handy</li>
+<li>There's no shame in buying hints if you're stuck!</li>
+</ul>
+<h2 id="aside"><a class="header" href="#aside">Aside</a></h2>
+<p>As is the pattern with the earlier challenges, this is actually a mistake that you can make when using CTR mode. Here's an excerpt from a paper about a very closely related cipher mode, GCM mode.</p>
+<p>&quot;We investigate (redacted) issues with the GCM block cipher mode as used in TLS and focus in particular on AES-GCM, the most widely deployed variant. With an Internet-wide scan we identifed 184 HTTPS servers (redacted), which fully breaks the authenticity of the connections. Affected servers include large corporations, financial institutions, and a credit card company&quot;</p>
+<h2 id="hints"><a class="header" href="#hints">Hints</a></h2>
+<p>If you really need some hints, I've left some base64 encoded here</p>
+<ol>
+<li><code>TG9vayBjYXJlZnVsbHkgYXQgdGhlIGVuY3J5cHQgZnVuY3Rpb24uIEl0IGdlbmVyYXRlcyB0aGUga2V5c3RyZWFtIGZ1bGx5IGluZGVwZW5kZW50bHkgb2YgdGhlIHBsYWludGV4dCEgVGhpcyBtZWFucyB0aGF0IHRoZSBrZXlzdHJlYW0gaXMgaWRlbnRpY2FsIGZvciBlYWNoIHBsYWludGV4dC4gS25vd2luZyB0aGlzLCB3aGF0IGNhbiB5b3UgZG8/Cg==</code></li>
+<li><code>V2Uga25vdyB0aGF0IHRoZSBrZXlzdHJlYW0gaXMgdGhlIHNhbWUgZm9yIGVhY2ggcGxhaW50ZXh0LCBidXQgd2hhdCBkb2VzIHRoaXMgbWVhbj8gVGhpcyBtZWFucyB0aGF0IHRoZSBmaXJzdCBieXRlIG9mIGVhY2ggbGluZSBpcyBYT1JkIGFnYWluc3QgdGhlIHNhbWUgYnl0ZSwgaWUgdGhlIGZpcnN0IGJ5dGUgb2YgdGhlIGtleXN0cmVhbS4gU2FtZSBmb3IgdGhlIHNlY29uZCBieXRlIG9mIGVhY2ggbGluZSBhbmQgc28gb24uIFRoaXMgaXMgcmVhbCBzaW1pbGFyIHRvIHRoZSBjb3BpbG90IGNoYWxsZW5nZSBpc24ndCBpdCEgWW91IGNhbiBndWVzcyBieXRlcyBpbiB0aGUgc2FtZSB3YXksIGJ1dCB5b3UgbmVlZCB0byBiZSBzbWFydGVyIGFib3V0IGZpZ3VyaW5nIG91dCB3aGVuIGEgZ3Vlc3MgaXMgJ2NvcnJlY3QnCg==</code></li>
+<li><code>SG93IGNhbiB3ZSB0ZWxsIHdoZW4gYSBndWVzcyBpcyBjb3JyZWN0PyBXZWxsIHdlIGtub3cgdGhhdCB0aGUgdGV4dCBpcyBlbmdsaXNoLiBTbyBjYW4gYXNzaWduIGVhY2ggZ3Vlc3MgYSAnc2NvcmUnIGJhc2VkIG9uIGhvdyAnZW5nbGlzaCcgdGhlIHJlc3VsdCBpcy4gRm9yIGV4YW1wbGUsIGFkZGluZyBwb2ludHMgZm9yIGxldHRlcnMsIG51bWJlcnMsIHB1bmN0dWF0aW9uLCBhbmQgd2hpdGVzcGFjZSwgd2hpbGUgc3VidHJhY3RpbmcgcG9pbnRzIGZvciBlYWNoIGJ5dGUgdGhhdCBkb2Vzbid0IGZpdC4K</code></li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../beginner/cut_and_paste.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../beginner/propagation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../beginner/cut_and_paste.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../beginner/propagation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

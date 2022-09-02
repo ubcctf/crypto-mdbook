@@ -1,0 +1,289 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Python tips and tricks - Cryptographer&#x27;s Codex</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../intro.html">Introduction</a></li><li class="chapter-item expanded "><a href="../beginner/intro.html"><strong aria-hidden="true">1.</strong> Beginner series</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../beginner/copilot.html"><strong aria-hidden="true">1.1.</strong> Copilot my savior</a></li><li class="chapter-item expanded "><a href="../beginner/cut_and_paste.html"><strong aria-hidden="true">1.2.</strong> Cut and paste</a></li><li class="chapter-item expanded "><a href="../beginner/one_two_three.html"><strong aria-hidden="true">1.3.</strong> One two three</a></li><li class="chapter-item expanded "><a href="../beginner/propagation.html"><strong aria-hidden="true">1.4.</strong> Propagation</a></li></ol></li><li class="chapter-item expanded "><a href="../cryptopals/intro.html"><strong aria-hidden="true">2.</strong> Cryptopals</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cryptopals/set_1.html"><strong aria-hidden="true">2.1.</strong> Set 1</a></li><li class="chapter-item expanded "><a href="../cryptopals/set_2.html"><strong aria-hidden="true">2.2.</strong> Set 2</a></li><li class="chapter-item expanded "><a href="../cryptopals/set_3.html"><strong aria-hidden="true">2.3.</strong> Set 3</a></li></ol></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">3.</strong> Resources</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../resources/python_tricks.html" class="active"><strong aria-hidden="true">3.1.</strong> Python tips and tricks</a></li><li class="chapter-item expanded "><a href="../resources/env_setup.html"><strong aria-hidden="true">3.2.</strong> Setting up a Linux environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../resources/env/windows.html"><strong aria-hidden="true">3.2.1.</strong> Windows</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Cryptographer&#x27;s Codex</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="basic-python-tips-and-tricks"><a class="header" href="#basic-python-tips-and-tricks">Basic python tips and tricks</a></h2>
+<p>This should cover most of the python api you'll commonly use when solving cryptography problems (except <code>pycryptodome</code> but we don't need to worry about that for now)</p>
+<p>I would recommend having the python REPL open (type <code>python</code> in the command line) and following along with the code examples</p>
+<h2 id="the-basics"><a class="header" href="#the-basics">The basics</a></h2>
+<pre><code class="language-python"># The bytes type is usually defined like this 
+
+my_bytes = b&quot;this is not a string, but a bytes object!&quot;
+
+list(my_bytes) # converts my_bytes to a list of numbers
+bytes(my_list) # converts a list of numbers to a bytes object
+</code></pre>
+<p>A Bytes object is really just a list of numbers, and you can see that by running <code>list(b&quot;my bytes&quot;)</code> or <code>b&quot;my bytes&quot;[0]</code>. There is one important detail, which is that a number in a byte array is always between 0 and 255, which is 2**8-1. For details, wait til cpsc 121!</p>
+<p>In general</p>
+<ul>
+<li>You get bytes objects from reading stuff (ie <code>open(&quot;data&quot;,&quot;rb&quot;).read()</code>) or converting from other data formats (hex, base64)</li>
+<li>You usually want to work with the list of numbers (because you can then map and iterate over it easily)</li>
+<li>You want to convert your final result to a bytes object to print it (because python will then format it nicely for you)</li>
+</ul>
+<h2 id="two-more-important-functions"><a class="header" href="#two-more-important-functions">Two more important functions</a></h2>
+<pre><code class="language-python">chr(x) # converts a decimal number x between 0 and 255 to it's character
+ord(c) # converts a character c to it's corresponding byte number
+
+ord(&quot;a&quot;) == 97
+chr(97) == &quot;a&quot;
+</code></pre>
+<p>Since all bytes are numbers and we sometimes want bytes to represent characters instead of random numbers, some smart people figured out the <a href="https://www.asciitable.com/">ascii table</a> and that's what <code>ord</code> and <code>chr</code> use.</p>
+<h2 id="decode-and-encode"><a class="header" href="#decode-and-encode">Decode and encode</a></h2>
+<p>Very similar to <code>chr</code> and <code>ord</code></p>
+<pre><code class="language-python">&quot;my string&quot;.encode() # converts from a string to bytes
+b&quot;my bytes&quot;.decode() # converts from bytes to a string
+</code></pre>
+<p>These can be thought of as shorthand for calling <code>ord</code>/<code>chr</code> on each character/number in a string/bytes.</p>
+<h2 id="how-to-work-with-bytes"><a class="header" href="#how-to-work-with-bytes">How to work with bytes</a></h2>
+<p>Your best friends will probably be good ol' for loops</p>
+<p>For the imperatively minded, this will print the numbers in the array, so <code>101</code>, <code>121</code>, <code>32</code> ...</p>
+<pre><code class="language-python">for b in b&quot;my bytes&quot;:
+    print(b)
+</code></pre>
+<p>For the functionally minded (and those who took 110), python does have maps and filters and such</p>
+<pre><code class="language-python">list(map(lambda x: x+1, b&quot;my bytes&quot;))
+</code></pre>
+<p>My preferred method is using python <a href="https://www.w3schools.com/python/python_lists_comprehension.asp">list comprehensions</a> since they're basically less clunky maps</p>
+<pre><code class="language-python">[x+1 for x in b&quot;my bytes&quot;]
+</code></pre>
+<h2 id="xor"><a class="header" href="#xor">XOR</a></h2>
+<p>If you've taken 121 you've seen it before, but it turns out that xor is actually quite important for various parts of cryptography. If you haven't taken 121, you'll want to understand how xor works so google &quot;bitwise XOR&quot;. Good googling skills are important!</p>
+<h2 id="xor-in-python"><a class="header" href="#xor-in-python">XOR in python</a></h2>
+<p>python has a xor operator, <code>^</code></p>
+<pre><code class="language-python">x ^ y # this is x xor y
+      # x and y have to be numbers
+</code></pre>
+<p>Since <code>^</code> only operates on numbers, you have to use one of the above strategies for actually xoring your entire bytes object.</p>
+<h2 id="files-in-python"><a class="header" href="#files-in-python">Files in python</a></h2>
+<p>This might be a bit tricky if you haven't seen this type of interface before, but here's how you work with files in python</p>
+<pre><code class="language-python">mode = &quot;r&quot; # Read my file as a big string
+mode = &quot;rb&quot; # Read my file as a big bytes object 
+mode = &quot;w&quot; # Write strings to my file
+mode = &quot;wb&quot; # Write bytes to my file
+
+f = open(&quot;my_filename&quot;, mode) # Open &quot;./my_filename&quot; with the given mode
+
+# if you don't input a mode, the mode is assumed to be &quot;r&quot;
+
+# You have to give a filename that already exists to use either r or rb
+# But you can use w or wb with a file that doesnt exist, python will create the file for you
+
+# f is a file object, the functions you can call on it are:
+f.close() # Closes the file, must always be called or else bad things happen
+
+# =============================================
+# if you opened as mode = &quot;r&quot;
+f.read()      # Returns the entire contents of the file as a big string
+f.readlines() # Returns an array of strings where each string is a line from the file
+
+# =============================================
+# if you opened as mode &quot;rb&quot;
+f.read()      # Returns the entire contents of the file as a big bytes object
+
+# =============================================
+# if you opened as mode &quot;w&quot;
+f.write(my_string) # Writes the string into the file
+
+# =============================================
+# if you opened as mode &quot;wb&quot;
+f.write(my_bytes)  # Writes the bytes into the file
+</code></pre>
+<p>This is only a basic summary, but hopefully it gives you the basic gist for how files work in python. You can read more about them <a href="https://www.programiz.com/python-programming/file-operation">here</a>. If you're curious about why files work like this and why you need to seek around a file then wait til 313! You'll learn all about them there.</p>
+<h2 id="bash-tricks"><a class="header" href="#bash-tricks">Bash tricks</a></h2>
+<p>Did you know that you can automatically make any program write to a file instead of printing out it's results?</p>
+<pre><code class="language-bash">$ python my_script.py &gt; result.txt
+</code></pre>
+<p>Anything that <code>my_script.py</code> prints out will be put into <code>result.txt</code> instead of being shown on the terminal.</p>
+<h2 id="for-those-who-really-want-to-write-racket-in-python"><a class="header" href="#for-those-who-really-want-to-write-racket-in-python">For those who really want to write racket in python</a></h2>
+<p>Here's some functions to get you started</p>
+<pre><code class="language-python">def cons(x, xs):
+    return [x] + xs
+
+def first(b):
+    return b[0]
+
+def rest(b):
+    return b[1:] # &lt;-- python slice notation
+
+def fn_for_bytes(b):
+    if len(b) == 0:
+        return # ...
+    else:
+        first_res = # ... fn_for_byte(first(b)) 
+        rest_res =  # ... fn_for_bytes(rest(b))
+        result =    # ... first_res, rest_res
+        return result
+</code></pre>
+<p>(PS: Though all the code you'll be presented with will be in an imperative style, so you should get used to the whole imperative thing)</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../resources/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../resources/env_setup.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../resources/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../resources/env_setup.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
