@@ -29,9 +29,17 @@ In the future, run `sudo apt update` and `sudo apt upgrade` occasionally to keep
 
 `pip` is the package manager for Python and you'll use it to install libraries and keep them up to date
 
+`virtualenv` creates small environments that you can safely install your tools into without having to worry about it affecting the rest of your system
+
+Run `mkdir ctf` to make a folder to put all your ctf related stuff in and `cd ctf` to move into it
+
+Run `python3 -m venv ctf` to create a virtual environment (this may take awhile) and run `source ctf/bin/activate` to activate it. You should now see a little `(ctf)` on your terminal prompt
+
 Run `python -m ensurepip --upgrade` to install `pip`
 
-Run `python -m pip install pycryptodome pwntools` to install the two libraries you'll need
+Run `python -m pip install pycryptodome pwntools` to install the two libraries you'll need (this may take awhile)
+
+Run `deactivate` after you're done to leave the virtual environment. Remember to run `source ctf/bin/activate` each time you restart your terminal to enter the venv
 
 ### Step 4: Install docker and vscode
 
