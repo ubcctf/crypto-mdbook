@@ -1,3 +1,7 @@
+# Cryptopals Set 1
+
+<!-- toc -->
+
 ### Intro
    * A lot of this set comes down to how comfortable you are writing code in python
    * There is a little hitch in that byte representations in python changed a lot between python2 and python3, meaning stackoverflow answers and such will be outdated and might not work

@@ -1,3 +1,7 @@
+# Cryptopals Set 3
+
+<!-- toc -->
+
 ## Intro
    * For me, this is the set where things really started to get fun
    * This note at the start made me really hyped and I hope it makes you excited too

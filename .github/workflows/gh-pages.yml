@@ -19,6 +19,13 @@ jobs:
         with:
           mdbook-version: '0.4.21'
 
+      - name: Install mdbook TOC
+        uses: supplypike/setup-bin@v1
+        with:
+          uri: 'https://github.com/badboy/mdbook-toc/releases/download/0.9.0/mdbook-toc-0.9.0-x86_64-unknown-linux-gnu.tar.gz'
+          name: 'mdbook-toc'
+          version: '0.9.0'
+
       - run: mdbook build
 
       - name: Deploy

@@ -1,5 +1,7 @@
 # Frequently asked questions
 
+<!-- toc -->
+
 ## Why cryptography?
 
 It's a lot of fun! It feels great to think something is impossible to break, spend hours starting at it, and then eventually pry it apart and break it into pieces to make it decrypt out your flag.

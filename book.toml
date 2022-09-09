@@ -3,4 +3,8 @@ authors = ["Lily Lin"]
 language = "en"
 multilingual = false
 src = "src"
-title = "Cryptographer's Codex"
+title = "The Cryptographer's Codex"
+
+[preprocessor.toc]
+command = "mdbook-toc"
+renderer = ["html"]
