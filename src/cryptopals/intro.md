@@ -3,7 +3,7 @@
 # THIS IS A WORK IN PROGRESS! THE FORMATTING WILL BE LESS GARBAGE AFTER IM DONE WITH IT
 
 ## Preparations before we start
-* This companion in general will not provide any direct solutions, I instead mostly give leading questions. If you need solutions, plenty of solutions and writeups are just a google away, though remember that looking at the answers at the back of the book leads to understanding less. Feel free to DM me on discord or in the `crypto` channel if you're stuck
+* This companion in general will not provide any direct solutions, I instead mostly give leading questions. If you need solutions, plenty of solutions and writeups are just a google away, though remember that looking at the answers at the back of the book leads to understanding less.
 * Almost all ctfers use python for solving challenges across basically all categories, so that’s what I would recommend
    * For python, all you’ll need is
       * A working python installation

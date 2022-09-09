@@ -1,5 +1,7 @@
 ## Environment setup: Windows
 
+# WIP
+
 1. Install Ubuntu WSL2
 2. `sudo apt install netcat curl python3`
 3. `python -m ensurepip --upgrade`

@@ -1,6 +1,6 @@
 ### Intro
    * A lot of this set comes down to how comfortable you are writing code in python
-   * There is a little hitch in that byte representations in python changed a lot between python2 and python3, meaning stackoverflow answers and such will be outdated and might not work, feel free to bug me on discord if you’re having trouble
+   * There is a little hitch in that byte representations in python changed a lot between python2 and python3, meaning stackoverflow answers and such will be outdated and might not work
 
 ### Challenge 1: Some useful functions and notes about python bytes
    * `int(x, 16)` will parse the string x as a hex string, and return a number
