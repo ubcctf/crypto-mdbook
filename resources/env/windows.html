@@ -135,7 +135,7 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="environment-setup-windows"><a class="header" href="#environment-setup-windows">Environment setup: Windows</a></h2>
-<h1 id="wip"><a class="header" href="#wip">WIP</a></h1>
+<h3 id="tldr"><a class="header" href="#tldr">TLDR</a></h3>
 <ol>
 <li>Install Ubuntu WSL2</li>
 <li><code>sudo apt install netcat curl python3</code></li>
@@ -144,6 +144,29 @@
 <li>Install Docker for windows and enable the wsl2 backend</li>
 <li>Install vscode and enable the <code>Remote: WSL</code> extension</li>
 </ol>
+<h3 id="step-1-install-wsl"><a class="header" href="#step-1-install-wsl">Step 1: Install WSL</a></h3>
+<p>Microsoft provides very in depth installation instructions on <a href="https://docs.microsoft.com/en-us/windows/wsl/install">https://docs.microsoft.com/en-us/windows/wsl/install</a>. <code>Ubuntu</code> is the OS you want if you have no prior experience with Linux</p>
+<p>There's additional steps for setting up your installation at <a href="https://docs.microsoft.com/en-us/windows/wsl/setup/environment">https://docs.microsoft.com/en-us/windows/wsl/setup/environment</a></p>
+<ul>
+<li>This includes information on setting up <code>docker</code> and <code>vscode</code>, both of which you should install in a bit</li>
+<li>Optional: WSL can be a bit sluggish with it's default settings, check out <a href="https://jade.fyi/blog/development-in-wsl/">https://jade.fyi/blog/development-in-wsl/</a> for some more tuning</li>
+</ul>
+<h3 id="step-2-install-basic-tools"><a class="header" href="#step-2-install-basic-tools">Step 2: Install basic tools</a></h3>
+<p><code>apt</code> is the package manager for Ubuntu, and it's what you'll use to install and update software for your WSL installation</p>
+<p>Run <code>sudo apt install netcat curl python3</code> in the terminal to install basic tools</p>
+<p>In the future, run <code>sudo apt update</code> and <code>sudo apt upgrade</code> occasionally to keep everything up to date</p>
+<h3 id="step-3-install-python-libraries"><a class="header" href="#step-3-install-python-libraries">Step 3: Install python libraries</a></h3>
+<p><code>pip</code> is the package manager for Python and you'll use it to install libraries and keep them up to date</p>
+<p>Run <code>python -m ensurepip --upgrade</code> to install <code>pip</code></p>
+<p>Run <code>python -m pip install pycryptodome pwntools</code> to install the two libraries you'll need</p>
+<h3 id="step-4-install-docker-and-vscode"><a class="header" href="#step-4-install-docker-and-vscode">Step 4: Install docker and vscode</a></h3>
+<p>Visual studio code is a versatile editor with great integration with WSL, I recommend it if you don't have a particular preference for editor <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></p>
+<p>Instructions for installing Docker with the WSL2 backend can be found on <a href="https://docs.docker.com/desktop/windows/wsl/">https://docs.docker.com/desktop/windows/wsl/</a> </p>
+<p>Details for enabling the WSL features</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-vscode">https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-vscode</a></li>
+<li><a href="https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-containers">https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-containers</a></li>
+</ul>
 
                     </main>
 

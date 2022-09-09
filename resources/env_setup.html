@@ -135,15 +135,31 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="environment-setup"><a class="header" href="#environment-setup">Environment setup</a></h2>
-<h1 id="wip"><a class="header" href="#wip">WIP</a></h1>
-<p>You'll want to have a linux shell with</p>
+<p>For solving CTF challenges in general, there's a few things that you'll need. Specific instructions for how to install these tools are in their respective OS pages</p>
 <ul>
-<li><code>docker</code></li>
-<li><code>python</code></li>
-<li>Some python libraries for CTF challenges (<code>pycryptodome</code>, <code>pwntools</code>)</li>
-<li><code>netcat</code></li>
-<li><code>curl</code></li>
+<li><a href="./env/windows.html">Windows</a></li>
+<li><a href="./env/mac.html">Mac</a></li>
 </ul>
+<h3 id="a-linux-shell"><a class="header" href="#a-linux-shell">A Linux shell</a></h3>
+<p>While not a strict requirement technically, a linux shell will almost inevetiably become a requirement as you do more CTF challenges. Installing tools, running binaries, debugging, these are all much easier to do with a fully fledged linux shell vs using a shell emulator or something like powershell</p>
+<p>The good part is that installing a proper linux environment is now quite easy</p>
+<ul>
+<li>MacOS comes with one pre-installed</li>
+<li>Windows now supports Windows Subsystem for Linux (WSL) v2, which is easy to install and gives you everything you need</li>
+</ul>
+<h3 id="basic-tools"><a class="header" href="#basic-tools">Basic tools</a></h3>
+<p>A basic suite of tools you'll want are</p>
+<ul>
+<li><code>python</code>, the programming language of choice for most CTFers. Comes preinstalled on all linux shells
+<ul>
+<li>You'll want some additional libraries though, namely <code>pycryptodome</code> which implements all the cryptographic algorithms you'll need, and <code>pwntools</code> which makes connecting to servers programatically easy</li>
+</ul>
+</li>
+<li><code>netcat</code>, a tool for connecting to ports on servers, which is what you'll need to do to connect to challenge instances</li>
+<li><code>curl</code>, a tool for making http/https requests, useful for challenges that are on websites</li>
+</ul>
+<h3 id="docker"><a class="header" href="#docker">Docker</a></h3>
+<p>Docker is a tool that lets you package up a &quot;mini vm&quot; of sorts as a list of instructions. This lets challenge authors give you a <code>Dockerfile</code> and let you rebuild the challenge server for your own local testing, which you'll definitely want to be able to do</p>
 
                     </main>
 

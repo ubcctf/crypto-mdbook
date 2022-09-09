@@ -140,7 +140,7 @@
 <h2 id="contents"><a class="header" href="#contents">Contents</a></h2>
 <div class="table-wrapper"><table><thead><tr><th>Q</th><th>A</th></tr></thead><tbody>
 <tr><td>Not sure if cryptography is your thing?</td><td>Start with the <a href="/beginner/intro.html">introductory beginner series</a> of challenges, they're a short series of 4 challenges that go from nothing to solving some real cryptography challenges</td></tr>
-<tr><td>Wanting to learn more about cryptography?</td><td>Work on cryptopals and follow the <a href="/cryptopals/intro.html">companion guide</a>!</td></tr>
+<tr><td>Wanting to learn more about cryptography?</td><td>Work on <a href="https://cryptopals.com/">cryptopals</a> and follow the <a href="/cryptopals/intro.html">companion guide</a>!</td></tr>
 <tr><td>Done both and looking for more?</td><td>Take a look at <a href="https://cryptohack.org/">cryptohack</a> for more challenges that cover additional topics like elliptical curves</td></tr>
 <tr><td>Want more low level systems-like cryptography?</td><td>Take a look at <a href="https://www.davidwong.fr/blockbreakers/index.html">Block Breakers</a> for a guided series on attacking block ciphers themselves</td></tr>
 <tr><td>Prefer lecture style lessons instead of getting hands on with challenges?</td><td><a href="https://www.youtube.com/c/RPISEC_talks/videos">RPISEC</a> has a bunch of streamed lectures covering a number of cryptography concepts. (If anyone has any textbook recommendations feel free to open a PR on <a href="https://github.com/ubcctf/crypto-mdbook">the repo</a>)</td></tr>
@@ -167,10 +167,110 @@
 <p>If you have a guide/resource that you would like to see added to the page, feel free to open a PR on <a href="https://github.com/ubcctf/crypto-mdbook">the github repo</a> and ping <code>@rctcwyvrn</code></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="frequently-asked-questions"><a class="header" href="#frequently-asked-questions">Frequently asked questions</a></h1>
 <h2 id="why-cryptography"><a class="header" href="#why-cryptography">Why cryptography?</a></h2>
-<h2 id="is-cryptography-just-math"><a class="header" href="#is-cryptography-just-math">Is cryptography just math?</a></h2>
-<h2 id="what-skills-do-i-need-to-get-started"><a class="header" href="#what-skills-do-i-need-to-get-started">What skills do I need to get started?</a></h2>
+<p>It's a lot of fun! It feels great to think something is impossible to break, spend hours starting at it, and then eventually pry it apart and break it into pieces to make it decrypt out your flag.</p>
+<p>The way I like to think about it is that solving CTF challenges usually involves trying to do something under a set of constraints. In binary exploitation the constraints are things like the state of the program, the stack, and the heap. In web the constraints are the various protections that websites implement.</p>
+<p>In cryptography the constraints that we have to figure out how to weave our way through are the protocols themselves, the mathematics behind the operations and/or the implementation of them in the real world. I find crypto a lot of fun because these rules are arbitrary, they're just whatever the challenge author or protocol author thought of, leading to each challenge having it's own unique flavor rather than always having to deal with things like ASLR.</p>
+<p>Cryptography is also uniquely vast in the kinds of ways that people try (and fail) to make connections secure, and the ways that we find to attack these protocols are also uniquely diverse. Having so many different ideas underpinning cryptography means there's a lot of things to learn and it's likely you'll find something that clicks for you and something you'll enjoy attacking, whether that's high level math-based attacks or low level cpu side-channel based attacks.</p>
+<p>TLDR: Crypto challenges feel fresh and new because of the freedoms challenge authors have when writing their challenges. There's also an extremely wide range of cryptographic attacks and techniques so you can really look for what you find fun</p>
 <h2 id="what-does-attacking-cryptography-teach-you"><a class="header" href="#what-does-attacking-cryptography-teach-you">What does attacking cryptography teach you?</a></h2>
-<h2 id="what-are-some-typical-types-of-cryptography-challenges"><a class="header" href="#what-are-some-typical-types-of-cryptography-challenges">What are some typical types of cryptography challenges?</a></h2>
+<p>Unfortunately, since not many people will ever have to write their own crypto code, cryptography as a CTF category is less useful for a typical CS career than things like pwn or web which teach you directly applicable skills for memory and website security respectively.</p>
+<p>However this doesn't mean that cryptography doesn't teach you anything! Crypto and other CTF categories teach you one extremely important thing, which is arguably the most important thing you can learn by doing CTFs, an attacker's mindset. </p>
+<p>What is an &quot;attacker's mindset&quot;? It's a way of thinking where you pick and pry and try to break whatever bit of code you're looking at. It's a way of reading code where you carefully examine each part and consider what assumptions each function makes and how that might go wrong. It's understanding code not just for what it wants to do, but trying to prove in your head that it <em>only</em> does what it wants to do and can't be manipulated otherwise.</p>
+<p>Experience doing this is highly useful in security obviously, but is also just useful for writing correct code in general. Most modern programming languages don't provide many guarantees (rip dependent types) on correctness or state and it often comes down to the programmer to be able to mentally check the preconditions and postconditions of your code. If you're highly used to doing this in an attacker's mindset then you end up being quicker at finding how things can go wrong, instead of being focused on the happy paths where everything goes right</p>
+<p>Outside of practical skills, for me a big general lesson was that <em>shit can go wrong really fast</em>. Cryptography breaks with even the smallest of mistakes and learning some crytographic attacks is a good way of really hammering that lesson in. Cryptography is extremely important but there's a reason why there's a constant stream of new algorithms and papers attacking existing ones. There's a reason why the NIST standardization process takes years to go from new algorithm to established standard.</p>
+<h2 id="is-cryptography-just-math"><a class="header" href="#is-cryptography-just-math">Is cryptography just math?</a></h2>
+<p>No! There's plenty to do that won't touch <em>any</em> math at all!</p>
+<p>Things with a lot of math:</p>
+<ul>
+<li>Most asymmetric cryptography (RSA, DH, ECC)
+<ul>
+<li>Key exchanges, signing, asymmetric encryption</li>
+</ul>
+</li>
+<li>Random number generation (LCG, LFSR, MT)</li>
+<li>Some post quantum cryptography (Lattices)</li>
+<li>Quantum cryptography (Lots of physics)</li>
+</ul>
+<p>Things with <em>no</em> math:</p>
+<ul>
+<li>Most symmetric cryptography (AES)
+<ul>
+<li>Ciphers, block cipher modes</li>
+<li>Some attacks on cipher construction start to involve some matricies (affine, linear attacks)</li>
+</ul>
+</li>
+<li>Hashing (SHA)</li>
+<li>Some post quantum cryptography (SPHINCS+)</li>
+<li>Side channel attacks (Power, timing, cache)</li>
+</ul>
+<p>Disclaimer: You may find that a lot of CTFs have challenges skewed towards the math categories due to it being easier to write challenges for things like RSA and ECC. That doesn't mean that cryptography is all math, CTF stuff just tends to be skewed that way. </p>
+<h2 id="what-skills-do-i-need-to-get-started"><a class="header" href="#what-skills-do-i-need-to-get-started">What skills do I need to get started?</a></h2>
+<p>Generally across the board the requirements to do easy challenges in each category is the same</p>
+<ul>
+<li>A machine set up with your programming language of choice (typically <code>python</code>) 
+<ul>
+<li>Needs to be able to do basic operations and communicate with servers (<code>pwnlib</code> for python)</li>
+</ul>
+</li>
+<li>A willingness to learn
+<ul>
+<li>This is extremely important! No matter how good you get at any CTF category, you'll always be banging your head feeling like a challenge is impossible and having no idea how to solve it. Being &quot;good&quot; at cryptography doesn't mean you instantly know how to solve something, it means you know how to learn how to figure out to attack something.</li>
+</ul>
+</li>
+</ul>
+<p>For the general &quot;types&quot; of challenges you find at CTFs, there are some requirements, but these really are quite minimal. I'm not trying to make these categories seem easier than they are, they really do just don't particularly require any other CS knowledge. You really can just sit down and learn how they work.</p>
+<p>Attacking block ciphers (AES)</p>
+<ul>
+<li>The current standard block cipher, AES, is constructed with 4 steps. Substitution, XOR, shifting rows, and shifting columns</li>
+<li>It turns out that some of these have mathematical representations, but at their core these operations are extremely simple. This is by design and is why AES is <em>so</em> fast</li>
+</ul>
+<p>Attacking block cipher modes (ECB, CBC, CTR, GCM)</p>
+<ul>
+<li>Block cipher modes usually involve simple operations like XORs</li>
+<li>GCM mode is the main exception, since it creates an authentication code with a signature as part of it's encryption. This neccessitates it being more mathematical and complicated.</li>
+</ul>
+<p>Attacking hashing algorithms (SHA)</p>
+<ul>
+<li>Similarly to block ciphers, SHA2 is made up of a number of rounds that involve a number of simple steps (bit shifts and XORs only!)
+<ul>
+<li>All hashes that use the Merkle–Damgård construction are very similar (MD5)</li>
+</ul>
+</li>
+<li>Common attacks usually involve a similar set of skills, lots of bit manipulations and XORS
+<ul>
+<li>Some statistical stuff maybe</li>
+</ul>
+</li>
+</ul>
+<p>Attacking RSA and Diffie Hellman</p>
+<ul>
+<li>RSA and DH rely on modular arithmetic. Understanding the basic algorithms is easy and just requires knowledge of how <code>mod</code> works</li>
+<li>Understanding <em>why</em> RSA works is more involved and requires learning some number theory (Fermat's little theorem)</li>
+<li>Basic attacks on RSA and DH involve basic math
+<ul>
+<li>For example, all the challenges in the <code>cryptopals</code> and <code>beginner asymmetric</code> sets of challenges don't require <em>any</em> of the more complicated math below</li>
+</ul>
+</li>
+<li>More and more advanced attacks on RSA start to involve more and more complex mathematics 
+<ul>
+<li>RSA uses prime numbers and primes have a ton of unique mathematical properties that number theorists study. These sometimes become CTF challenges (eg: smooth primes)</li>
+<li>Both algorithms use modular integers, or in math terms, finite Galois fields. Galois fields are extremely well studied and therefore have a lot of interesting properties that can lead to CTF challenges (eg: small subgroup confinement)</li>
+<li>Neither of these are required at the start, but if you plan to really get into RSA and DH this is kinda where you're headed</li>
+</ul>
+</li>
+</ul>
+<p>Attacking ECC</p>
+<ul>
+<li>As the name implies (elliptical curve cryptography), you'll need to know about elliptical curves to learn about how ECC works
+<ul>
+<li>Elliptical curves are just a certain type of curve (like a weird sideways parabola)</li>
+<li>The idea is to use points on this curve as a mathematical group because they have nice properties, so what ECC does is extend the algorithms for RSA and DH (which use Galois fields) to this new elliptical curve field. So similar algorithms, just points on a curve instead of numbers (which is weird if you haven't done this kinda math before)</li>
+</ul>
+</li>
+</ul>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>Knock on wood</p>
+</div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="beginner-series"><a class="header" href="#beginner-series">Beginner series</a></h1>
 <h3 id="basics"><a class="header" href="#basics">Basics</a></h3>
 <p>Let's start with what you'll need to solve this set of challenges</p>
@@ -801,17 +901,33 @@ def fn_for_bytes(b):
 </code></pre>
 <p>(PS: Though all the code you'll be presented with will be in an imperative style, so you should get used to the whole imperative thing)</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="environment-setup"><a class="header" href="#environment-setup">Environment setup</a></h2>
-<h1 id="wip"><a class="header" href="#wip">WIP</a></h1>
-<p>You'll want to have a linux shell with</p>
+<p>For solving CTF challenges in general, there's a few things that you'll need. Specific instructions for how to install these tools are in their respective OS pages</p>
 <ul>
-<li><code>docker</code></li>
-<li><code>python</code></li>
-<li>Some python libraries for CTF challenges (<code>pycryptodome</code>, <code>pwntools</code>)</li>
-<li><code>netcat</code></li>
-<li><code>curl</code></li>
+<li><a href="resources/./env/windows.html">Windows</a></li>
+<li><a href="resources/./env/mac.html">Mac</a></li>
 </ul>
+<h3 id="a-linux-shell"><a class="header" href="#a-linux-shell">A Linux shell</a></h3>
+<p>While not a strict requirement technically, a linux shell will almost inevetiably become a requirement as you do more CTF challenges. Installing tools, running binaries, debugging, these are all much easier to do with a fully fledged linux shell vs using a shell emulator or something like powershell</p>
+<p>The good part is that installing a proper linux environment is now quite easy</p>
+<ul>
+<li>MacOS comes with one pre-installed</li>
+<li>Windows now supports Windows Subsystem for Linux (WSL) v2, which is easy to install and gives you everything you need</li>
+</ul>
+<h3 id="basic-tools"><a class="header" href="#basic-tools">Basic tools</a></h3>
+<p>A basic suite of tools you'll want are</p>
+<ul>
+<li><code>python</code>, the programming language of choice for most CTFers. Comes preinstalled on all linux shells
+<ul>
+<li>You'll want some additional libraries though, namely <code>pycryptodome</code> which implements all the cryptographic algorithms you'll need, and <code>pwntools</code> which makes connecting to servers programatically easy</li>
+</ul>
+</li>
+<li><code>netcat</code>, a tool for connecting to ports on servers, which is what you'll need to do to connect to challenge instances</li>
+<li><code>curl</code>, a tool for making http/https requests, useful for challenges that are on websites</li>
+</ul>
+<h3 id="docker"><a class="header" href="#docker">Docker</a></h3>
+<p>Docker is a tool that lets you package up a &quot;mini vm&quot; of sorts as a list of instructions. This lets challenge authors give you a <code>Dockerfile</code> and let you rebuild the challenge server for your own local testing, which you'll definitely want to be able to do</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="environment-setup-windows"><a class="header" href="#environment-setup-windows">Environment setup: Windows</a></h2>
-<h1 id="wip-1"><a class="header" href="#wip-1">WIP</a></h1>
+<h3 id="tldr"><a class="header" href="#tldr">TLDR</a></h3>
 <ol>
 <li>Install Ubuntu WSL2</li>
 <li><code>sudo apt install netcat curl python3</code></li>
@@ -820,6 +936,29 @@ def fn_for_bytes(b):
 <li>Install Docker for windows and enable the wsl2 backend</li>
 <li>Install vscode and enable the <code>Remote: WSL</code> extension</li>
 </ol>
+<h3 id="step-1-install-wsl"><a class="header" href="#step-1-install-wsl">Step 1: Install WSL</a></h3>
+<p>Microsoft provides very in depth installation instructions on <a href="https://docs.microsoft.com/en-us/windows/wsl/install">https://docs.microsoft.com/en-us/windows/wsl/install</a>. <code>Ubuntu</code> is the OS you want if you have no prior experience with Linux</p>
+<p>There's additional steps for setting up your installation at <a href="https://docs.microsoft.com/en-us/windows/wsl/setup/environment">https://docs.microsoft.com/en-us/windows/wsl/setup/environment</a></p>
+<ul>
+<li>This includes information on setting up <code>docker</code> and <code>vscode</code>, both of which you should install in a bit</li>
+<li>Optional: WSL can be a bit sluggish with it's default settings, check out <a href="https://jade.fyi/blog/development-in-wsl/">https://jade.fyi/blog/development-in-wsl/</a> for some more tuning</li>
+</ul>
+<h3 id="step-2-install-basic-tools"><a class="header" href="#step-2-install-basic-tools">Step 2: Install basic tools</a></h3>
+<p><code>apt</code> is the package manager for Ubuntu, and it's what you'll use to install and update software for your WSL installation</p>
+<p>Run <code>sudo apt install netcat curl python3</code> in the terminal to install basic tools</p>
+<p>In the future, run <code>sudo apt update</code> and <code>sudo apt upgrade</code> occasionally to keep everything up to date</p>
+<h3 id="step-3-install-python-libraries"><a class="header" href="#step-3-install-python-libraries">Step 3: Install python libraries</a></h3>
+<p><code>pip</code> is the package manager for Python and you'll use it to install libraries and keep them up to date</p>
+<p>Run <code>python -m ensurepip --upgrade</code> to install <code>pip</code></p>
+<p>Run <code>python -m pip install pycryptodome pwntools</code> to install the two libraries you'll need</p>
+<h3 id="step-4-install-docker-and-vscode"><a class="header" href="#step-4-install-docker-and-vscode">Step 4: Install docker and vscode</a></h3>
+<p>Visual studio code is a versatile editor with great integration with WSL, I recommend it if you don't have a particular preference for editor <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></p>
+<p>Instructions for installing Docker with the WSL2 backend can be found on <a href="https://docs.docker.com/desktop/windows/wsl/">https://docs.docker.com/desktop/windows/wsl/</a> </p>
+<p>Details for enabling the WSL features</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-vscode">https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-vscode</a></li>
+<li><a href="https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-containers">https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-containers</a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="environment-setup-macos"><a class="header" href="#environment-setup-macos">Environment setup: MacOS</a></h2>
 
                     </main>
