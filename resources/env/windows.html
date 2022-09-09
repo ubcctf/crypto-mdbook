@@ -157,8 +157,12 @@
 <p>In the future, run <code>sudo apt update</code> and <code>sudo apt upgrade</code> occasionally to keep everything up to date</p>
 <h3 id="step-3-install-python-libraries"><a class="header" href="#step-3-install-python-libraries">Step 3: Install python libraries</a></h3>
 <p><code>pip</code> is the package manager for Python and you'll use it to install libraries and keep them up to date</p>
+<p><code>virtualenv</code> creates small environments that you can safely install your tools into without having to worry about it affecting the rest of your system</p>
+<p>Run <code>mkdir ctf</code> to make a folder to put all your ctf related stuff in and <code>cd ctf</code> to move into it</p>
+<p>Run <code>python3 -m venv ctf</code> to create a virtual environment (this may take awhile) and run <code>source ctf/bin/activate</code> to activate it. You should now see a little <code>(ctf)</code> on your terminal prompt</p>
 <p>Run <code>python -m ensurepip --upgrade</code> to install <code>pip</code></p>
-<p>Run <code>python -m pip install pycryptodome pwntools</code> to install the two libraries you'll need</p>
+<p>Run <code>python -m pip install pycryptodome pwntools</code> to install the two libraries you'll need (this may take awhile)</p>
+<p>Run <code>deactivate</code> after you're done to leave the virtual environment. Remember to run <code>source ctf/bin/activate</code> each time you restart your terminal to enter the venv</p>
 <h3 id="step-4-install-docker-and-vscode"><a class="header" href="#step-4-install-docker-and-vscode">Step 4: Install docker and vscode</a></h3>
 <p>Visual studio code is a versatile editor with great integration with WSL, I recommend it if you don't have a particular preference for editor <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></p>
 <p>Instructions for installing Docker with the WSL2 backend can be found on <a href="https://docs.docker.com/desktop/windows/wsl/">https://docs.docker.com/desktop/windows/wsl/</a> </p>
