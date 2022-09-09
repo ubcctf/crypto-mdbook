@@ -7,7 +7,7 @@ An opinonated introduction and general resource for those interested in cryptogr
 | Q                                                                             | A |
 |-------------------------------------------------------------------------------|---|
 | Not sure if cryptography is your thing?                                       | Start with the [introductory beginner series](/beginner/intro.md) of challenges, they're a short series of 4 challenges that go from nothing to solving some real cryptography challenges |
-| Wanting to learn more about cryptography?                                     | Work on cryptopals and follow the [companion guide](/cryptopals/intro.md)!
+| Wanting to learn more about cryptography?                                     | Work on [cryptopals](https://cryptopals.com/) and follow the [companion guide](/cryptopals/intro.md)!
 | Done both and looking for more?                                               | Take a look at [cryptohack](https://cryptohack.org/) for more challenges that cover additional topics like elliptical curves
 | Want more low level systems-like cryptography?                                | Take a look at [Block Breakers](https://www.davidwong.fr/blockbreakers/index.html) for a guided series on attacking block ciphers themselves 
 | Prefer lecture style lessons instead of getting hands on with challenges?     | [RPISEC](https://www.youtube.com/c/RPISEC_talks/videos) has a bunch of streamed lectures covering a number of cryptography concepts. (If anyone has any textbook recommendations feel free to open a PR on [the repo](https://github.com/ubcctf/crypto-mdbook)) |
