@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Cryptopals - Cryptographer&#x27;s Codex</title>
+        <title>Learning Z3 - Cryptographer&#x27;s Codex</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../intro.html">Introduction</a></li><li class="chapter-item expanded affix "><a href="../faq.html">FAQ</a></li><li class="chapter-item expanded "><a href="../beginner/intro.html"><strong aria-hidden="true">1.</strong> Beginner series</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../beginner/copilot.html"><strong aria-hidden="true">1.1.</strong> Copilot my savior</a></li><li class="chapter-item expanded "><a href="../beginner/cut_and_paste.html"><strong aria-hidden="true">1.2.</strong> Cut and paste</a></li><li class="chapter-item expanded "><a href="../beginner/one_two_three.html"><strong aria-hidden="true">1.3.</strong> One two three</a></li><li class="chapter-item expanded "><a href="../beginner/propagation.html"><strong aria-hidden="true">1.4.</strong> Propagation</a></li></ol></li><li class="chapter-item expanded "><a href="../cryptopals/intro.html" class="active"><strong aria-hidden="true">2.</strong> Cryptopals</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cryptopals/set_1.html"><strong aria-hidden="true">2.1.</strong> Set 1</a></li><li class="chapter-item expanded "><a href="../cryptopals/set_2.html"><strong aria-hidden="true">2.2.</strong> Set 2</a></li><li class="chapter-item expanded "><a href="../cryptopals/set_3.html"><strong aria-hidden="true">2.3.</strong> Set 3</a></li></ol></li><li class="chapter-item expanded "><a href="../assorted/intro.html"><strong aria-hidden="true">3.</strong> Assorted challenges</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../assorted/z3.html"><strong aria-hidden="true">3.1.</strong> Learning Z3</a></li><li class="chapter-item expanded "><a href="../assorted/rust.html"><strong aria-hidden="true">3.2.</strong> Using Rust+Python for bruteforce</a></li></ol></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">4.</strong> Resources</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../resources/python_tricks.html"><strong aria-hidden="true">4.1.</strong> Python tips and tricks</a></li><li class="chapter-item expanded "><a href="../resources/env_setup.html"><strong aria-hidden="true">4.2.</strong> Setting up a Linux environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../resources/env/windows.html"><strong aria-hidden="true">4.2.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../resources/env/mac.html"><strong aria-hidden="true">4.2.2.</strong> Mac</a></li></ol></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../intro.html">Introduction</a></li><li class="chapter-item expanded affix "><a href="../faq.html">FAQ</a></li><li class="chapter-item expanded "><a href="../beginner/intro.html"><strong aria-hidden="true">1.</strong> Beginner series</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../beginner/copilot.html"><strong aria-hidden="true">1.1.</strong> Copilot my savior</a></li><li class="chapter-item expanded "><a href="../beginner/cut_and_paste.html"><strong aria-hidden="true">1.2.</strong> Cut and paste</a></li><li class="chapter-item expanded "><a href="../beginner/one_two_three.html"><strong aria-hidden="true">1.3.</strong> One two three</a></li><li class="chapter-item expanded "><a href="../beginner/propagation.html"><strong aria-hidden="true">1.4.</strong> Propagation</a></li></ol></li><li class="chapter-item expanded "><a href="../cryptopals/intro.html"><strong aria-hidden="true">2.</strong> Cryptopals</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cryptopals/set_1.html"><strong aria-hidden="true">2.1.</strong> Set 1</a></li><li class="chapter-item expanded "><a href="../cryptopals/set_2.html"><strong aria-hidden="true">2.2.</strong> Set 2</a></li><li class="chapter-item expanded "><a href="../cryptopals/set_3.html"><strong aria-hidden="true">2.3.</strong> Set 3</a></li></ol></li><li class="chapter-item expanded "><a href="../assorted/intro.html"><strong aria-hidden="true">3.</strong> Assorted challenges</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../assorted/z3.html" class="active"><strong aria-hidden="true">3.1.</strong> Learning Z3</a></li><li class="chapter-item expanded "><a href="../assorted/rust.html"><strong aria-hidden="true">3.2.</strong> Using Rust+Python for bruteforce</a></li></ol></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">4.</strong> Resources</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../resources/python_tricks.html"><strong aria-hidden="true">4.1.</strong> Python tips and tricks</a></li><li class="chapter-item expanded "><a href="../resources/env_setup.html"><strong aria-hidden="true">4.2.</strong> Setting up a Linux environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../resources/env/windows.html"><strong aria-hidden="true">4.2.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../resources/env/mac.html"><strong aria-hidden="true">4.2.2.</strong> Mac</a></li></ol></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,71 +134,16 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2 id="cryptopals-companion"><a class="header" href="#cryptopals-companion">Cryptopals companion</a></h2>
-<h1 id="this-is-a-work-in-progress-the-formatting-will-be-less-garbage-after-im-done-with-it"><a class="header" href="#this-is-a-work-in-progress-the-formatting-will-be-less-garbage-after-im-done-with-it">THIS IS A WORK IN PROGRESS! THE FORMATTING WILL BE LESS GARBAGE AFTER IM DONE WITH IT</a></h1>
-<h2 id="preparations-before-we-start"><a class="header" href="#preparations-before-we-start">Preparations before we start</a></h2>
-<ul>
-<li>This companion in general will not provide any direct solutions, I instead mostly give leading questions. If you need solutions, plenty of solutions and writeups are just a google away, though remember that looking at the answers at the back of the book leads to understanding less.</li>
-<li>Almost all ctfers use python for solving challenges across basically all categories, so that’s what I would recommend
-<ul>
-<li>For python, all you’ll need is
-<ul>
-<li>A working python installation</li>
-<li><a href="https://pypi.org/project/pycryptodome/">pycryptodome</a></li>
-<li>Something to write code with, <code>vscode</code> is nice</li>
-</ul>
-</li>
-<li>I’ll be assuming you’ll be writing in python for this guide</li>
-</ul>
-</li>
-<li>Make sure you read the homepage, everything it says is true
-<ul>
-<li>You don’t need (and aren’t expected to) know any cryptography beforehand
-<ul>
-<li>They do unfortunately skip out on defining some terms, but that’s what this companion is for</li>
-</ul>
-</li>
-<li>You only need simple math 
-<ul>
-<li>The hard math is left to the professionals and we just copy their equations :)</li>
-<li>No math shows up until set 5 anyway </li>
-</ul>
-</li>
-<li>These challenges are attacks, not puzzles with tricks. The challenge authors make an effort to make the challenges clear and &quot;doable&quot;, instead of obfuscated like you'd see in competitions. This companion guide also helps clear up the occasional ambiguity and confusing wording</li>
-<li>I like to put an extra little disclaimer whenever I recommend someone take a look at cryptopals, which is that after solving these challenges most people feel a strong feeling of dread. Dread when they realize how fragile cryptography can be and how most people writing code that uses cryptography are <strong>completely unaware</strong> that these fragile points exist</li>
-</ul>
-</li>
-<li>The general structure of the sets is
-<ul>
-<li>Set 1 is preparation and “the qualifier set” </li>
-<li>Sets 2-4 are various attacks on symmetric ciphers and a few hashes in set 4</li>
-<li>Sets 5-6 are attacks on various asymmetric primitives, all using primes and numbers</li>
-</ul>
-</li>
-<li>In case you’re wondering how well cryptopals will prepare you for CTFs, take a look at CSAW CTF 2020. Three challenges are basically directly taken from cryptopals and can be solved by copying over the code
-<ul>
-<li>Authy is a length extension sha attack, covered in challenge 29</li>
-<li>modus operandi is a ciphertext detection challenge, covered in challenge 11</li>
-<li>adversarial is a fixed nonce CTR, covered in challenges 6 and 20</li>
-</ul>
-</li>
-</ul>
-<h2 id="some-quick-definitions"><a class="header" href="#some-quick-definitions">Some quick definitions</a></h2>
-<p><strong>Encryption</strong></p>
-<ul>
-<li>Encryption is turning a message (like “cryptography is cool”) and changing into a message that appears to be a garbled mess (like “falkjdior30vjs”) based on some “key”</li>
-<li>The method of encrypting the message and what the key is vastly depends on the algorithm, for example in rsa the key is a number, in caesar ciphers the key is a table, and in aes the key is 16 bytes</li>
-<li><strong>Plaintext</strong> is used to refer to the message before encryption and <strong>ciphertext</strong> is used for the garbled message after encryption</li>
-</ul>
+                        <p>Coming soon</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../beginner/propagation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../assorted/intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                            <a rel="next" href="../cryptopals/set_1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../assorted/rust.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -207,10 +152,10 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../beginner/propagation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../assorted/intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    <a rel="next" href="../cryptopals/set_1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../assorted/rust.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
