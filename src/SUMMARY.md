@@ -11,7 +11,7 @@
     - [Set 1](./cryptopals/set_1.md)
     - [Set 2](./cryptopals/set_2.md)
     - [Set 3](./cryptopals/set_3.md)
-- [Assorted challenges](./assorted/intro.md)
+- [Assorted guides](./assorted/intro.md)
     - [Learning Z3](./assorted/z3.md)
     - [Using Rust+Python for bruteforce](./assorted/rust.md)
 - [Resources](./resources/index.md)
