@@ -14,10 +14,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup mdBook
-        uses: peaceiris/actions-mdbook@v1
+      - name: Install mdbook
+        uses: supplypike/setup-bin@v1
         with:
-          mdbook-version: '0.4.21'
+          uri: 'https://github.com/rust-lang/mdBook/releases/download/v0.4.21/mdbook-v0.4.21-x86_64-unknown-linux-gnu.tar.gz'
+          name: 'mdbook'
+          version: '0.4.21'
 
       - name: Install mdbook TOC
         uses: supplypike/setup-bin@v1
@@ -28,9 +30,7 @@ jobs:
 
       - run: mdbook build
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/main' }}
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./book
+          folder: book 
